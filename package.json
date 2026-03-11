@@ -1,0 +1,11 @@
+{
+  "name": "dcatr-spec",
+  "scripts": {
+    "serve": "browser-sync start --server docs --no-notify --no-open",
+    "dev": "browser-sync start --server docs --files 'docs/**/*' --no-notify --open"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.0"
+  },
+  "private": true
+}
