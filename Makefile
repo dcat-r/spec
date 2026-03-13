@@ -9,9 +9,19 @@ NT         = vocab/dcatr.nt
 
 FORMATS =  $(NT) $(RDF_XML) $(JSONLD)
 
-.PHONY: all validate clean sync
+# Diagrams
+PUML_SRC = $(wildcard docs/diagrams/*.puml)
+PUML_SVG = $(PUML_SRC:.puml=.svg)
 
-all: $(TERMS_HTML) $(FORMATS)
+.PHONY: all validate clean sync diagrams
+
+all: $(TERMS_HTML) $(FORMATS) $(PUML_SVG)
+
+# Diagrams
+diagrams: $(PUML_SVG)
+
+docs/diagrams/%.svg: docs/diagrams/%.puml
+	plantuml -tsvg $<
 
 # Validation
 validate: $(ONTOLOGY)
@@ -44,4 +54,4 @@ sync:
 	fi
 
 clean:
-	rm -f $(FORMATS) $(TERMS_HTML)
+	rm -f $(FORMATS) $(TERMS_HTML) $(PUML_SVG)

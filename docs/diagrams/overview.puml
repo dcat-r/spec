@@ -1,0 +1,43 @@
+@startuml
+
+skinparam rectangle {
+  RoundCorner 5
+}
+
+' Service (DataService)
+rectangle "dcatr:Service" as Service #d4edda
+
+' Catalogs
+rectangle "dcatr:ServiceData" as ServiceData #ffe6cc
+rectangle "dcatr:Repository" as Repository #ffe6cc
+rectangle "dcatr:Dataset" as Dataset #ffe6cc
+
+' Graphs
+rectangle "dcatr:RepositoryManifestGraph" as RepoManifestGraph #d1c2f0
+rectangle "dcatr:SystemGraph" as SystemGraph #d1c2f0
+rectangle "dcatr:DataGraph" as DataGraph #d1c2f0
+rectangle "dcatr:ServiceManifestGraph" as ServiceManifestGraph #d1c2f0
+rectangle "dcatr:WorkingGraph" as WorkingGraph #d1c2f0
+
+Service --> ServiceData : dcatr:serviceLocalData
+Service --> Repository : dcatr:serviceRepository
+
+Repository --> DataGraph : dcatr:repositoryDataGraph
+Repository --> Dataset : dcatr:repositoryDataset
+Repository --> RepoManifestGraph : dcatr:repositoryManifestGraph
+Repository ..> SystemGraph : dcatr:repositorySystemGraph
+
+Dataset --> DataGraph : dcatr:dataGraph
+
+ServiceData --> ServiceManifestGraph : dcatr:serviceManifestGraph
+ServiceData ..> WorkingGraph : dcatr:serviceWorkingGraph
+ServiceData ..> SystemGraph : dcatr:serviceSystemGraph
+
+legend right
+  |= Color |= Superclass |
+  | <#d4edda> | dcat:DataService |
+  | <#ffe6cc> | dcatr:Directory ⊆ dcat:Catalog |
+  | <#d1c2f0> | dcatr:Graph ⊆ dcat:Dataset|
+endlegend
+
+@enduml

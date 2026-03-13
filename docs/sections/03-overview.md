@@ -4,6 +4,11 @@ This section provides a high-level overview of the DCAT-R vocabulary. Formal def
 
 Throughout this specification, a running example is used: a chemistry research repository at a university, serving molecular structure data and experimental results through a SPARQL endpoint.
 
+<figure id="fig-overview">
+  <img src="diagrams/overview.svg" alt="Overview of the DCAT-R vocabulary showing the relationships between Service, Repository, Dataset, ServiceData, and the five graph types.">
+  <figcaption>Overview of the DCAT-R vocabulary structure.</figcaption>
+</figure>
+
 ### DCAT-R as Application Framework
 
 In typical DCAT usage, `dcat:DataService` describes services from an **external perspective**: a SPARQL endpoint has a URL, speaks a protocol, and serves certain datasets. This is the view of a catalog consumer looking at a service from outside.
