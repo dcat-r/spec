@@ -12,3 +12,9 @@ venv/
 
 # macOS
 .DS_Store
+
+# Generated files
+vocab/dcatr.rdf
+vocab/dcatr.jsonld
+vocab/dcatr.nt
+docs/terms/
