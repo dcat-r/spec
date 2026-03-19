@@ -29,6 +29,7 @@ validate: $(ONTOLOGY)
 
 # Term documentation
 $(TERMS_HTML): $(ONTOLOGY)
+	@mkdir -p $(dir $@)
 	pylode $< -o $@ -p ontpub --css true
 
 # Format conversions
