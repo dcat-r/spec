@@ -1,0 +1,59 @@
+name: Deploy DCAT-R Specification
+
+on:
+  push:
+    branches: [main]
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install tools
+        run: |
+          pip install pylode
+          sudo apt-get update
+          sudo apt-get install -y raptor2-utils
+
+      - name: Validate vocabulary
+        run: make validate
+
+      - name: Build artifacts
+        run: make all
+
+      - name: Prepare publish directory
+        run: |
+          mkdir -p _site
+          # Copy spec content
+          cp -r docs/* _site/
+          # Copy vocabulary files to root of site
+          cp vocab/dcatr.ttl _site/
+          cp vocab/dcatr.rdf _site/
+          cp vocab/dcatr.jsonld _site/
+          cp vocab/dcatr.nt _site/
+          # Copy examples if they exist
+          if [ -d examples ] && [ "$(ls -A examples 2>/dev/null)" ]; then
+            cp -r examples _site/
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          force_orphan: true
