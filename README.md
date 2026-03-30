@@ -54,6 +54,17 @@ spec/
 - [ReSpec documentation](https://respec.org/docs/)
 - [DCAT 3 specification](https://www.w3.org/TR/vocab-dcat-3/)
 
+## Acknowledgements
+
+<table style="border: 0;">
+<tr>
+<td><a href="https://nlnet.nl/"><img src="https://nlnet.nl/logo/banner.svg" alt="NLnet Foundation Logo" height="100"></a></td>
+<td><a href="https://nlnet.nl/core" ><img src="https://nlnet.nl/logo/NGI/NGIZero-green.hex.svg" alt="NGI Zero Core Logo" height="150"></a></td>
+</tr>
+</table>
+
+This project is funded through [NGI Zero Core](https://nlnet.nl/core), a fund established by [NLnet](https://nlnet.nl/) with financial support from the European Commission's [Next Generation Internet](https://ngi.eu/) program.
+
 ## License
 
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
