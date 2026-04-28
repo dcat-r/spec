@@ -1,12 +1,33 @@
-<p align="center">
-  <img src="docs/dcatr-logo.png" alt="DCAT-R Logo" width="125" align="right">
-</p>
+<br />
+<div align="center">
+  <img src="docs/dcatr-logo.png" alt="DCAT-R Logo" width="200">
 
-# DCAT-R Specification
+<h2 align="center">DCAT-R</h2>
+
+  <p align="center">
+    A vocabulary for data services over RDF repositories
+    <br />
+    <br />
+    <a href="https://w3id.org/dcatr"><strong>Read the Spec »</strong></a>
+    <br />
+    <a href="https://dcat-r.github.io/spec/terms/index.html"><strong>Explore the vocabulary »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/dcat-r/spec/blob/main/CHANGELOG.md">Changelog</a>
+    ·
+    <a href="https://github.com/dcat-r/spec/issues">Report Error</a>
+    ·
+    <a href="https://github.com/dcat-r/spec/issues">Request Feature</a>
+    ·
+    <a href="https://github.com/orgs/dcat-r/discussions">Discussions</a>
+  </p>
+</div>
+
+## About the Project
 
 DCAT-R (Data Catalog Vocabulary for RDF Repositories) extends [DCAT 3](https://www.w3.org/TR/vocab-dcat-3/) with classes and properties for describing RDF repositories, their datasets, and named graphs through a four-level hierarchy: Service, Repository, Dataset, Graph.
 
-This repository contains the [ReSpec](https://respec.org/) specification document and the DCAT-R vocabulary definition.
+This repository contains the [ReSpec](https://respec.org/) specification document and the vocabulary definition.
 
 ## Prerequisites
 
@@ -34,25 +55,6 @@ This opens the specification at `http://localhost:3000`.
 | `make validate` | Validate ontology RDF syntax |
 | `make formats` | Convert Turtle to N-Triples, RDF/XML, JSON-LD |
 | `make clean` | Remove generated files |
-
-## Project Structure
-
-```
-spec/
-├── docs/
-│   ├── index.html              # ReSpec specification document
-│   └── sections/               # Markdown sections (included by ReSpec)
-├── vocab/
-│   └── dcatr.ttl               # DCAT-R vocabulary (Turtle)
-├── examples/
-│   └── example-repository.ttl  # Example DCAT-R descriptions
-└── package.json
-```
-
-## Further Reading
-
-- [ReSpec documentation](https://respec.org/docs/)
-- [DCAT 3 specification](https://www.w3.org/TR/vocab-dcat-3/)
 
 ## Acknowledgements
 
