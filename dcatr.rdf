@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dcatr="https://w3id.org/dcatr#" xmlns:dct="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sdo="https://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:nodeID="genid1">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid1">
+    <foaf:name>Marcel Otto</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid1">
+    <foaf:homepage rdf:resource="http://marcelotto.net"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:title>DCAT-R: Data Catalog Vocabulary for RDF Repositories</dct:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:description>Extension of DCAT 3 for describing RDF repositories, datasets, and named graphs. DCAT-R introduces a four-level hierarchy (Service, Repository, Dataset, Graph) tailored for RDF infrastructure.</dct:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:creator rdf:nodeID="genid1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-09-21</dct:created>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-19</dct:modified>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-19</dct:issued>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <owl:versionInfo>0.1.0</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <dct:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <vann:preferredNamespacePrefix>dcatr</vann:preferredNamespacePrefix>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <vann:preferredNamespaceUri>https://w3id.org/dcatr#</vann:preferredNamespaceUri>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <sdo:codeRepository rdf:resource="https://github.com/dcat-r/spec"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <rdfs:seeAlso rdf:resource="https://w3id.org/dcatr"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#">
+    <rdfs:seeAlso rdf:resource="https://dcat-r.github.io/spec/terms/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdfs:label>Service</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdfs:comment>A dcatr:Service provides the basis for operations that access and process repository data. Following dcat:DataService, services represent 'collections of operations that provide access to one or more datasets or data processing functions.' Services are the application layer of DCAT-R, defining what you can do with repository data. Different service types provide different operations and access patterns; multiple instances of the same service type can serve the same repository with different configurations on different machines.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Service">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/dcat#servesDataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:label>service repository</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:comment>Links a service to its repository.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceRepository">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#ServiceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdfs:label>service local data</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdfs:comment>Links a service to its local data catalog (usually a blank node) containing service-specific graphs not distributed with the repository.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceLocalData">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdfs:label>use primary as default</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdfs:comment>Controls whether the repository's primary graph should automatically be designated as the service's default graph.
+
+Three-value semantics:
+- Absence: Auto mode - convention-based fallback. If no explicit default graph is configured in the service manifest, the primary graph becomes the default. If an explicit default is configured, it takes precedence.
+- true: Enforce mode - the primary graph MUST be the default. Raises an error if an explicit default graph differs from the primary graph.
+- false: Disable mode - no automatic designation. The service must explicitly configure a default graph, or none will be set.
+
+This property enables flexible configuration: most single-graph repositories benefit from automatic designation, while edge cases requiring explicit control can disable it (false mode) or enforce consistency (true mode).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <skos:scopeNote>When not set in the manifest, the runtime behavior is determined by the application.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#usePrimaryAsDefault">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdfs:label>Repository</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdfs:comment>A managed collection containing an RDF dataset, its catalog metadata (repository manifest graph), and operational system graphs. The repository is the distributable unit of DCAT-R - when replicated or shared between service instances, all of its contents travel together. DCAT-R supports two patterns: a multi-graph pattern using repositoryDataset to link to a Dataset containing multiple data graphs, and a single-graph shortcut using repositoryDataGraph to combine primary designation and containment in one statement.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Repository">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:label>repository dataset</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:comment>Links a repository to its primary dataset. Used in the multi-graph pattern where the dataset contains multiple data graphs.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataset">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdfs:label>repository primary graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdfs:comment>Designates the primary graph of a repository. Pure designator - does not imply containment. In multi-graph repositories, the primary graph must also be listed in the dataset. For single-graph repositories that need both containment and designation, use dcatr:repositoryDataGraph instead.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryPrimaryGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#repositoryPrimaryGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:label>repository data graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:comment>Convenience property for single-graph repositories that combines primary designation and containment in one statement. For multi-graph repositories, use repositoryDataset with repositoryPrimaryGraph instead.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryDataGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:label>repository system graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:comment>Links a repository to its system graphs that are distributed with the repository (like history or application-specific operational graphs).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositorySystemGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Repository"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#RepositoryManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:label>repository manifest</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:comment>Links a repository to its manifest graph containing the DCAT descriptions and configuration of the repository itself.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#repositoryManifestGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdfs:label>Service Data</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdfs:comment>Local catalog for service-specific graphs that are not distributed with the repository. Usually instantiated as a blank node, but can have an explicit URI if needed.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceData">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#ServiceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#ServiceManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:label>service manifest graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:comment>Service-specific configuration graph, local to this service instance.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceManifestGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#ServiceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#WorkingGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:label>service working graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:comment>Temporary working graphs local to this service instance.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceWorkingGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#ServiceData"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:label>service system graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:comment>Service-local system graphs not distributed with the repository.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#serviceSystemGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdfs:label>Dataset</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdfs:comment>The RDF dataset within a repository, modeled as both a DCAT catalog and a DCATR Directory. As the root directory of the graph hierarchy, it contains data graphs and nested directories.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Dataset">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:label>data graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:comment>Links a dataset to its constituent data graphs. Only DataGraphs (user data) belong to the Dataset; SystemGraphs are linked directly to the Repository.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#dataGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid2">
+    <rdf:first rdf:resource="https://w3id.org/dcatr#WorkingGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid2">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid3">
+    <rdf:first rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid3">
+    <rdf:rest rdf:nodeID="genid2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid4">
+    <rdf:first rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid4">
+    <rdf:rest rdf:nodeID="genid3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid5">
+    <rdf:first rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid5">
+    <rdf:rest rdf:nodeID="genid4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="genid6">
+    <owl:unionOf rdf:nodeID="genid5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Element"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdfs:label>Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdfs:comment>Abstract base class for all graphs in a DCAT-R repository. Every graph must belong to exactly one of the four concrete subclasses: DataGraph (user data), ManifestGraph (DCAT-R configuration), SystemGraph (system mechanisms), or WorkingGraph (temporary working areas).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <owl:equivalentClass rdf:nodeID="genid6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Graph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#NamedGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdfs:label>Default Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdfs:comment>The default graph of an RDF dataset, which contains triples not assigned to any named graph. This classification is specific to a service instance and should be defined in the ServiceGraph, not in the repository metadata. Only one graph per dataset can be designated as DefaultGraph within a service.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <skos:scopeNote>The classification of a graph as DefaultGraph is analogous to defining a localGraphName for a NamedGraph - both are service-specific configurations that belong in the ServiceGraph.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DefaultGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#DefaultGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdfs:label>Named Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdfs:comment>A named graph within an RDF dataset whose graph name (specified via dcatr:localGraphName) may differ from the graph's canonical URI. This classification is specific to a service instance and should be defined in the service manifest graph, not in the repository metadata. The DefaultGraph/NamedGraph classification is orthogonal to the four content-based graph types - a graph can be, for example, both a DataGraph and a NamedGraph.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <skos:scopeNote>The NamedGraph classification belongs in the ServiceGraph alongside any localGraphName mappings, as both concern how the service accesses the graph.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#NamedGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#NamedGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdfs:label>local graph name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdfs:comment>The local name under which this graph appears in a specific service instance's RDF dataset. Enables service-specific aliasing: a graph's canonical URI (its RDF resource identifier) can differ from the graph name used in a particular service. Should be unique within a service instance (enforced by implementations, not by OWL semantics).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <skos:scopeNote>While this property should be unique within a service context, it is not declared as owl:InverseFunctionalProperty to avoid global inference conflicts between independent service instances.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#localGraphName">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#WorkingGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdfs:label>Data Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdfs:comment>Graph containing the actual user data of the dataset. These are the primary content graphs that form the core of the repository's dataset, distinct from manifests, system data, and working areas. Data graphs are intended for distribution and represent the repository's main content.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#DataGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#WorkingGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdfs:label>Manifest Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdfs:comment>Base class for graphs containing DCAT-R configuration and descriptions. Unlike other graph types, manifest graphs have a known structure that DCAT-R understands and depends upon. They contain the DCAT descriptions and configuration that define the repository and service structure.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ManifestGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdfs:label>Service Manifest Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdfs:comment>Manifest graph containing service-specific configuration and local settings. This graph is not replicated between service instances and contains the local configuration specific to one service instance.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#ServiceManifestGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdfs:label>Repository Manifest Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdfs:comment>Manifest graph containing the DCAT descriptions of the repository itself, including metadata about the dataset and all graphs. This manifest is part of the repository distribution and shared across all service instances.
+
+DESIGN NOTE: This graph exhibits controlled self-reference - it describes the repository of which it is part. This is by design and analogous to metadata patterns in traditional information systems (e.g., a book's index being part of the book it describes).
+
+BEST PRACTICE: The graph MUST have its own URI distinct from the repository URI to avoid identifier collision. Recommended URI patterns:
+- {repository-uri}/manifest
+- {repository-uri}#manifest
+- {repository-base}/catalog/manifest
+
+The self-reference is managed through the dcatr:repositoryManifestGraph property which explicitly links the repository to its manifest graph. This pattern acknowledges that metadata about a system can be part of that system while maintaining clear boundaries through URI separation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#RepositoryManifestGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#SystemGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdfs:label>Working Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdfs:comment>Service-local graph not included in distributions. Used for drafts, experiments, temporary work, cache graphs, import/export buffers, personal sandboxes, or validation graphs. Working graphs belong to the ServiceData catalog and are never part of repository distributions.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#WorkingGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Graph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#DataGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#ManifestGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <owl:disjointWith rdf:resource="https://w3id.org/dcatr#WorkingGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdfs:label>System Graph</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdfs:comment>Operational graph that supports service functionality but is opaque to DCAT-R (unlike manifest graphs, whose structure DCAT-R understands). System graphs can be either distributed (linked to the repository via repositorySystemGraph, e.g. version history, provenance records, shared indexes) or local (linked to service data via serviceSystemGraph, e.g. query caches, operation logs). Applications extend DCAT-R by defining specialized SystemGraph subclasses for their operational needs.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#SystemGraph">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdfs:label>Element</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdfs:comment>Abstract base class for items that can be organized within a Directory. Both Graphs and Directories are Elements, enabling hierarchical containment.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Element">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/dcatr#Element"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdfs:label>Directory</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdfs:comment>A named collection of graphs and nested directories within a Dataset. Directories enable hierarchical organization of graphs, providing structure for navigation, scoped metadata, and targeted operations. Each directory can contain DataGraphs as members and nested Directories.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Directory">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/dcat#dataset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Element"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:label>member</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:comment>Links a directory to an Element (Graph or Directory) that is a direct member of this directory. As an inverse functional property, each element belongs to at most one directory (unique containment).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#member">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <owl:inverseOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Element"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdfs:label>parent directory</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdfs:comment>Links an element to its containing directory. Inverse of dcatr:member.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#parentDirectory">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/dcatr#member"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Directory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:label>directory</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:comment>Links a directory to a nested subdirectory.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#directory">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdfs:label>Manifest</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdfs:comment>Document that describes a DCAT-R service configuration, including repository and dataset settings and their metadata.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#Manifest">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:domain rdf:resource="https://w3id.org/dcatr#Manifest"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:range rdf:resource="https://w3id.org/dcatr#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:label>manifest service</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:comment>Links a manifest to its configured service.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/dcatr#manifestService">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/dcatr#"/>
+  </rdf:Description>
+</rdf:RDF>

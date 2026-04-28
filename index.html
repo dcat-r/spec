@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+  <script class='remove'>
+    // All config options at https://respec.org/docs/
+    var respecConfig = {
+      noRecTrack: true,
+      specStatus: "unofficial",
+      edDraftURI: null,
+      editors: [{
+        name: "Marcel Otto",
+        url: "http://marcelotto.net/",
+      }],
+      github: {
+        repoURL: "dcat-r/spec",
+        branch: "main"
+      },
+      shortName: "dcatr",
+      latestVersion: "https://w3id.org/dcatr",
+      localBiblio: {
+        "DCAT3": {
+          title: "Data Catalog Vocabulary (DCAT) - Version 3",
+          href: "https://www.w3.org/TR/vocab-dcat-3/",
+          authors: ["Riccardo Albertoni", "David Browning", "Simon Cox",
+                    "Alejandra Gonzalez Beltran", "Andrea Perego", "Peter Winstanley"],
+          publisher: "W3C",
+          status: "W3C Recommendation",
+          date: "2024"
+        },
+        "SPARQL11-PROTOCOL": {
+          title: "SPARQL 1.1 Protocol",
+          href: "https://www.w3.org/TR/sparql11-protocol/",
+          publisher: "W3C",
+          status: "W3C Recommendation"
+        },
+        "SPARQL11-HTTP-RDF-UPDATE": {
+          title: "SPARQL 1.1 Graph Store HTTP Protocol",
+          href: "https://www.w3.org/TR/sparql11-http-rdf-update/",
+          publisher: "W3C",
+          status: "W3C Recommendation"
+        }
+      },
+      logos: [{
+        src: "dcatr-logo.png",
+        alt: "DCAT-R Logo",
+        width: 100,
+      }],
+      maxTocLevel: 3
+    };
+  </script>
+  <style>
+    pre.example {
+      border-left: 4px solid #007acc;
+      background: #f5f5f5;
+    }
+    table.def {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.def th, table.def td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    table.def th {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">DCAT-R: Data Catalog Vocabulary for RDF Repositories</h1>
+  <section id='abstract'>
+    <p>
+      DCAT-R (Data Catalog Vocabulary for RDF Repositories) extends [[[DCAT3]]] with classes and properties
+      specifically designed for describing and managing RDF repositories from an internal,
+      application-oriented perspective. While DCAT 3 focuses on the external perspective -
+      cataloging datasets and describing services for discovery - DCAT-R adds an intra-service
+      perspective, providing the structural vocabulary foundation for building RDF application
+      frameworks and services.
+    </p>
+    <p>
+      The vocabulary introduces a four-level hierarchy - Service, Repository, Dataset, and Graph -
+      where each level refines a DCAT 3 class for RDF-specific needs. It classifies graphs into
+      four disjoint types (Data, Manifest, System, and Working) to distinguish user data from
+      operational infrastructure and configuration. Additionally, DCAT-R provides a hierarchical
+      directory mechanism for organizing large-scale datasets and a manifest-based configuration
+      system that separates distributed repository metadata from instance-local service settings.
+      Since all DCAT-R classes extend their DCAT 3 counterparts, every valid DCAT-R description
+      remains a valid DCAT 3 description, ensuring interoperability with existing DCAT-aware
+      tools and catalogs.
+    </p>
+  </section>
+  <section id='sotd'>
+    <p>
+      This is version 0.1.0 of the DCAT-R vocabulary specification.
+      Comments and feedback are welcome via
+      <a href="https://github.com/dcat-r/spec/issues">GitHub Issues</a>.
+    </p>
+  </section>
+
+  <!-- Markdown sections -->
+  <section class="informative" data-include="sections/01-introduction.md" data-include-format="markdown"></section>
+  <section id='conformance'></section>
+  <section id="overview" class="informative" data-include="sections/03-overview.md" data-include-format="markdown"></section>
+  <section data-include="sections/04-vocabulary.md" data-include-format="markdown"></section>
+  <section data-include="sections/05-directories.md" data-include-format="markdown"></section>
+  <section data-include="sections/06-manifests.md" data-include-format="markdown"></section>
+  <section id="examples" class="informative" data-include="sections/07-examples.md" data-include-format="markdown"></section>
+
+  <section id='acknowledgements' class='informative'>
+    <h2>Acknowledgements</h2>
+    <p>
+      This vocabulary builds upon DCAT 3, developed by the W3C Dataset Exchange
+      Working Group. The authors acknowledge contributions from the RDF and
+      Linked Data community.
+    </p>
+    <p>
+      This project is funded through <a href="https://nlnet.nl/core">NGI Zero Core</a>,
+      a fund established by <a href="https://nlnet.nl/">NLnet</a> with financial
+      support from the European Commission's <a href="https://ngi.eu/">Next Generation
+      Internet</a> program.
+    </p>
+  </section>
+</body>
+</html>

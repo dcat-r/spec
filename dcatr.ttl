@@ -1,0 +1,378 @@
+@prefix dcatr: <https://w3id.org/dcatr#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sdo: <https://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+##########################################################################
+# Ontology Metadata
+##########################################################################
+
+<https://w3id.org/dcatr#> a owl:Ontology
+    ; dct:title "DCAT-R: Data Catalog Vocabulary for RDF Repositories"
+    ; dct:description "Extension of DCAT 3 for describing RDF repositories, datasets, and named graphs. DCAT-R introduces a four-level hierarchy (Service, Repository, Dataset, Graph) tailored for RDF infrastructure."
+    ; dct:creator [
+        a foaf:Person ;
+        foaf:name "Marcel Otto" ;
+        foaf:homepage <http://marcelotto.net> ;
+    ]
+    ; dct:created "2025-09-21"^^xsd:date
+    ; dct:modified "2026-03-19"^^xsd:date
+    ; dct:issued "2026-03-19"^^xsd:date
+    ; owl:versionInfo "0.1.0"
+    ; dct:license <https://creativecommons.org/licenses/by/4.0/>
+    ; vann:preferredNamespacePrefix "dcatr"
+    ; vann:preferredNamespaceUri "https://w3id.org/dcatr#"
+    ; sdo:codeRepository <https://github.com/dcat-r/spec>
+    ; rdfs:seeAlso <https://w3id.org/dcatr>, <https://dcat-r.github.io/spec/terms/>
+.
+
+
+##########################################################################
+# Service
+##########################################################################
+
+dcatr:Service a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:DataService
+        ; rdfs:label "Service"
+        ; rdfs:comment "A dcatr:Service provides the basis for operations that access and process repository data. Following dcat:DataService, services represent 'collections of operations that provide access to one or more datasets or data processing functions.' Services are the application layer of DCAT-R, defining what you can do with repository data. Different service types provide different operations and access patterns; multiple instances of the same service type can serve the same repository with different configurations on different machines."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:serviceRepository a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf dcat:servesDataset
+            ; rdfs:domain dcatr:Service
+            ; rdfs:range  dcatr:Repository
+            ; rdfs:label "service repository"
+            ; rdfs:comment "Links a service to its repository."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:serviceLocalData a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:domain dcatr:Service
+            ; rdfs:range  dcatr:ServiceData
+            ; rdfs:label "service local data"
+            ; rdfs:comment "Links a service to its local data catalog (usually a blank node) containing service-specific graphs not distributed with the repository."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:usePrimaryAsDefault a rdf:Property, owl:DatatypeProperty
+            ; rdfs:domain dcatr:Service
+            ; rdfs:range  xsd:boolean
+            ; rdfs:label "use primary as default"
+            ; rdfs:comment """Controls whether the repository's primary graph should automatically be designated as the service's default graph.
+
+Three-value semantics:
+- Absence: Auto mode - convention-based fallback. If no explicit default graph is configured in the service manifest, the primary graph becomes the default. If an explicit default is configured, it takes precedence.
+- true: Enforce mode - the primary graph MUST be the default. Raises an error if an explicit default graph differs from the primary graph.
+- false: Disable mode - no automatic designation. The service must explicitly configure a default graph, or none will be set.
+
+This property enables flexible configuration: most single-graph repositories benefit from automatic designation, while edge cases requiring explicit control can disable it (false mode) or enforce consistency (true mode)."""
+            ; skos:scopeNote "When not set in the manifest, the runtime behavior is determined by the application."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+
+##########################################################################
+# Repository
+##########################################################################
+
+dcatr:Repository a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Catalog, dcatr:Directory
+        ; rdfs:label "Repository"
+        ; rdfs:comment "A managed collection containing an RDF dataset, its catalog metadata (repository manifest graph), and operational system graphs. The repository is the distributable unit of DCAT-R - when replicated or shared between service instances, all of its contents travel together. DCAT-R supports two patterns: a multi-graph pattern using repositoryDataset to link to a Dataset containing multiple data graphs, and a single-graph shortcut using repositoryDataGraph to combine primary designation and containment in one statement."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:repositoryDataset a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf dcatr:directory
+            ; rdfs:domain dcatr:Repository
+            ; rdfs:range  dcatr:Dataset
+            ; rdfs:label "repository dataset"
+            ; rdfs:comment "Links a repository to its primary dataset. Used in the multi-graph pattern where the dataset contains multiple data graphs."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:repositoryPrimaryGraph a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:domain dcatr:Repository
+            ; rdfs:range  dcatr:DataGraph
+            ; rdfs:label "repository primary graph"
+            ; rdfs:comment "Designates the primary graph of a repository. Pure designator - does not imply containment. In multi-graph repositories, the primary graph must also be listed in the dataset. For single-graph repositories that need both containment and designation, use dcatr:repositoryDataGraph instead."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:repositoryDataGraph a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf dcatr:repositoryPrimaryGraph, dcatr:member
+            ; rdfs:domain dcatr:Repository
+            ; rdfs:range  dcatr:DataGraph
+            ; rdfs:label "repository data graph"
+            ; rdfs:comment "Convenience property for single-graph repositories that combines primary designation and containment in one statement. For multi-graph repositories, use repositoryDataset with repositoryPrimaryGraph instead."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:repositorySystemGraph a rdf:Property, owl:ObjectProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:Repository
+            ; rdfs:range  dcatr:SystemGraph
+            ; rdfs:label "repository system graph"
+            ; rdfs:comment "Links a repository to its system graphs that are distributed with the repository (like history or application-specific operational graphs)."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:repositoryManifestGraph a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:Repository
+            ; rdfs:range  dcatr:RepositoryManifestGraph
+            ; rdfs:label "repository manifest"
+            ; rdfs:comment "Links a repository to its manifest graph containing the DCAT descriptions and configuration of the repository itself."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+
+##########################################################################
+# ServiceData
+##########################################################################
+
+dcatr:ServiceData a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Catalog, dcatr:Directory
+        ; rdfs:label "Service Data"
+        ; rdfs:comment "Local catalog for service-specific graphs that are not distributed with the repository. Usually instantiated as a blank node, but can have an explicit URI if needed."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:serviceManifestGraph a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:ServiceData
+            ; rdfs:range  dcatr:ServiceManifestGraph
+            ; rdfs:label "service manifest graph"
+            ; rdfs:comment "Service-specific configuration graph, local to this service instance."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:serviceWorkingGraph a rdf:Property, owl:ObjectProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:ServiceData
+            ; rdfs:range  dcatr:WorkingGraph
+            ; rdfs:label "service working graph"
+            ; rdfs:comment "Temporary working graphs local to this service instance."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:serviceSystemGraph a rdf:Property, owl:ObjectProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:ServiceData
+            ; rdfs:range  dcatr:SystemGraph
+            ; rdfs:label "service system graph"
+            ; rdfs:comment "Service-local system graphs not distributed with the repository."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+##########################################################################
+# Dataset
+##########################################################################
+
+dcatr:Dataset a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Catalog, dcatr:Directory
+        ; rdfs:label "Dataset"
+        ; rdfs:comment "The RDF dataset within a repository, modeled as both a DCAT catalog and a DCATR Directory. As the root directory of the graph hierarchy, it contains data graphs and nested directories."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:dataGraph a rdf:Property, owl:ObjectProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:Dataset
+            ; rdfs:range  dcatr:DataGraph
+            ; rdfs:label "data graph"
+            ; rdfs:comment "Links a dataset to its constituent data graphs. Only DataGraphs (user data) belong to the Dataset; SystemGraphs are linked directly to the Repository."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+
+##########################################################################
+# Graph
+##########################################################################
+
+dcatr:Graph a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Dataset, dcatr:Element
+        ; rdfs:label "Graph"
+        ; rdfs:comment "Abstract base class for all graphs in a DCAT-R repository. Every graph must belong to exactly one of the four concrete subclasses: DataGraph (user data), ManifestGraph (DCAT-R configuration), SystemGraph (system mechanisms), or WorkingGraph (temporary working areas)."
+        ; owl:equivalentClass [
+            owl:unionOf (dcatr:DataGraph dcatr:ManifestGraph dcatr:SystemGraph dcatr:WorkingGraph)
+        ]
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:DefaultGraph a rdfs:Class, owl:Class
+            ; rdfs:subClassOf dcatr:Graph
+            ; owl:disjointWith dcatr:NamedGraph
+            ; rdfs:label "Default Graph"
+            ; rdfs:comment "The default graph of an RDF dataset, which contains triples not assigned to any named graph. This classification is specific to a service instance and should be defined in the ServiceGraph, not in the repository metadata. Only one graph per dataset can be designated as DefaultGraph within a service."
+            ; skos:scopeNote "The classification of a graph as DefaultGraph is analogous to defining a localGraphName for a NamedGraph - both are service-specific configurations that belong in the ServiceGraph."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:NamedGraph a rdfs:Class, owl:Class
+            ; rdfs:subClassOf dcatr:Graph
+            ; owl:disjointWith dcatr:DefaultGraph
+            ; rdfs:label "Named Graph"
+            ; rdfs:comment "A named graph within an RDF dataset whose graph name (specified via dcatr:localGraphName) may differ from the graph's canonical URI. This classification is specific to a service instance and should be defined in the service manifest graph, not in the repository metadata. The DefaultGraph/NamedGraph classification is orthogonal to the four content-based graph types - a graph can be, for example, both a DataGraph and a NamedGraph."
+            ; skos:scopeNote "The NamedGraph classification belongs in the ServiceGraph alongside any localGraphName mappings, as both concern how the service accesses the graph."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:localGraphName a rdf:Property, owl:ObjectProperty
+            ; rdfs:domain dcatr:NamedGraph
+            ; rdfs:range rdfs:Resource
+            ; rdfs:label "local graph name"
+            ; rdfs:comment "The local name under which this graph appears in a specific service instance's RDF dataset. Enables service-specific aliasing: a graph's canonical URI (its RDF resource identifier) can differ from the graph name used in a particular service. Should be unique within a service instance (enforced by implementations, not by OWL semantics)."
+            ; skos:scopeNote "While this property should be unique within a service context, it is not declared as owl:InverseFunctionalProperty to avoid global inference conflicts between independent service instances."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+
+##########################################################################
+# Data Graphs (User Data)
+##########################################################################
+
+dcatr:DataGraph a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcatr:Graph
+        ; owl:disjointWith dcatr:ManifestGraph, dcatr:SystemGraph, dcatr:WorkingGraph
+        ; rdfs:label "Data Graph"
+        ; rdfs:comment "Graph containing the actual user data of the dataset. These are the primary content graphs that form the core of the repository's dataset, distinct from manifests, system data, and working areas. Data graphs are intended for distribution and represent the repository's main content."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+##########################################################################
+# Manifest Graphs (DCAT-R Configuration)
+##########################################################################
+
+dcatr:ManifestGraph a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcatr:Graph
+        ; owl:disjointWith dcatr:DataGraph, dcatr:SystemGraph, dcatr:WorkingGraph
+        ; rdfs:label "Manifest Graph"
+        ; rdfs:comment "Base class for graphs containing DCAT-R configuration and descriptions. Unlike other graph types, manifest graphs have a known structure that DCAT-R understands and depends upon. They contain the DCAT descriptions and configuration that define the repository and service structure."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:ServiceManifestGraph a rdfs:Class, owl:Class
+            ; rdfs:subClassOf dcatr:ManifestGraph
+            ; rdfs:label "Service Manifest Graph"
+            ; rdfs:comment "Manifest graph containing service-specific configuration and local settings. This graph is not replicated between service instances and contains the local configuration specific to one service instance."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:RepositoryManifestGraph a rdfs:Class, owl:Class
+            ; rdfs:subClassOf dcatr:ManifestGraph
+            ; rdfs:label "Repository Manifest Graph"
+            ; rdfs:comment """Manifest graph containing the DCAT descriptions of the repository itself, including metadata about the dataset and all graphs. This manifest is part of the repository distribution and shared across all service instances.
+
+DESIGN NOTE: This graph exhibits controlled self-reference - it describes the repository of which it is part. This is by design and analogous to metadata patterns in traditional information systems (e.g., a book's index being part of the book it describes).
+
+BEST PRACTICE: The graph MUST have its own URI distinct from the repository URI to avoid identifier collision. Recommended URI patterns:
+- {repository-uri}/manifest
+- {repository-uri}#manifest
+- {repository-base}/catalog/manifest
+
+The self-reference is managed through the dcatr:repositoryManifestGraph property which explicitly links the repository to its manifest graph. This pattern acknowledges that metadata about a system can be part of that system while maintaining clear boundaries through URI separation."""
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+##########################################################################
+# Working Graphs
+##########################################################################
+
+dcatr:WorkingGraph a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcatr:Graph
+        ; owl:disjointWith dcatr:DataGraph, dcatr:ManifestGraph, dcatr:SystemGraph
+        ; rdfs:label "Working Graph"
+        ; rdfs:comment "Service-local graph not included in distributions. Used for drafts, experiments, temporary work, cache graphs, import/export buffers, personal sandboxes, or validation graphs. Working graphs belong to the ServiceData catalog and are never part of repository distributions."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+
+##########################################################################
+# System Graphs
+##########################################################################
+
+dcatr:SystemGraph a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcatr:Graph
+        ; owl:disjointWith dcatr:DataGraph, dcatr:ManifestGraph, dcatr:WorkingGraph
+        ; rdfs:label "System Graph"
+        ; rdfs:comment "Operational graph that supports service functionality but is opaque to DCAT-R (unlike manifest graphs, whose structure DCAT-R understands). System graphs can be either distributed (linked to the repository via repositorySystemGraph, e.g. version history, provenance records, shared indexes) or local (linked to service data via serviceSystemGraph, e.g. query caches, operation logs). Applications extend DCAT-R by defining specialized SystemGraph subclasses for their operational needs."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+
+##########################################################################
+# Directory
+##########################################################################
+
+dcatr:Element a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Resource
+        ; rdfs:label "Element"
+        ; rdfs:comment "Abstract base class for items that can be organized within a Directory. Both Graphs and Directories are Elements, enabling hierarchical containment."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+dcatr:Directory a rdfs:Class, owl:Class
+        ; rdfs:subClassOf dcat:Catalog, dcatr:Element
+        ; rdfs:label "Directory"
+        ; rdfs:comment "A named collection of graphs and nested directories within a Dataset. Directories enable hierarchical organization of graphs, providing structure for navigation, scoped metadata, and targeted operations. Each directory can contain DataGraphs as members and nested Directories."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:member a rdf:Property, owl:ObjectProperty, owl:InverseFunctionalProperty
+            ; rdfs:subPropertyOf dcat:dataset
+            ; rdfs:domain dcatr:Directory
+            ; rdfs:range  dcatr:Element
+            ; rdfs:label "member"
+            ; rdfs:comment "Links a directory to an Element (Graph or Directory) that is a direct member of this directory. As an inverse functional property, each element belongs to at most one directory (unique containment)."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:parentDirectory a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; owl:inverseOf dcatr:member
+            ; rdfs:domain dcatr:Element
+            ; rdfs:range  dcatr:Directory
+            ; rdfs:label "parent directory"
+            ; rdfs:comment "Links an element to its containing directory. Inverse of dcatr:member."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+    dcatr:directory a rdf:Property, owl:ObjectProperty
+            ; rdfs:subPropertyOf dcatr:member
+            ; rdfs:domain dcatr:Directory
+            ; rdfs:range  dcatr:Directory
+            ; rdfs:label "directory"
+            ; rdfs:comment "Links a directory to a nested subdirectory."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
+
+
+##########################################################################
+# Manifest
+##########################################################################
+
+dcatr:Manifest a rdfs:Class, owl:Class
+        ; rdfs:subClassOf foaf:Document
+        ; rdfs:label "Manifest"
+        ; rdfs:comment "Document that describes a DCAT-R service configuration, including repository and dataset settings and their metadata."
+        ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+.
+
+    dcatr:manifestService a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty
+            ; rdfs:subPropertyOf foaf:primaryTopic
+            ; rdfs:domain dcatr:Manifest
+            ; rdfs:range  dcatr:Service
+            ; rdfs:label "manifest service"
+            ; rdfs:comment "Links a manifest to its configured service."
+            ; rdfs:isDefinedBy <https://w3id.org/dcatr#>
+    .
